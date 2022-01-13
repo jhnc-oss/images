@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python_version: [ '3.10' ]
+        python_version: [ '3.7', '3.8', '3.9', '3.10' ]
     name: "Build python:${{ matrix.python_version}}"
     env:
       FULL_IMAGE_NAME: "ghcr.io/${{ github.repository }}/python"
@@ -18,5 +18,6 @@ jobs:
       - name: Build
         run: |
           podman build --file python/Dockerfile --tag ${FULL_IMAGE_NAME}:${{ matrix.python_version }} \
+            --build-arg PYTHON_VERSION=${{ matrix.python_version }} \
             --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
             --label org.opencontainers.image.revision="${GITHUB_SHA}"
