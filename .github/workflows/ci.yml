@@ -24,3 +24,11 @@ jobs:
       - uses: hadolint/hadolint-action@v1.6.0
         with:
           dockerfile: python/Dockerfile
+      - name: Deploy
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          podman login ghcr.io -u ${{ github.actor }} --password-stdin <<< ${{ secrets.GITHUB_TOKEN }}
+          podman push ${FULL_IMAGE_NAME}:${{ matrix.python_version }}
+          if [[ "${{ matrix.python_version}}" = "3.10" ]]; then
+            podman push ${FULL_IMAGE_NAME}:${{ matrix.python_version }} ${FULL_IMAGE_NAME}:latest
+          fi
