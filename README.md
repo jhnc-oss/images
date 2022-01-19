@@ -11,7 +11,7 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 
 ### Tags
 
-#### python
+#### [python](./python/Dockerfile)
 
 - `3.10` / `latest`
 - `3.9`
