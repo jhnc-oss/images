@@ -37,7 +37,7 @@ jobs:
     name: "Hadolint"
     steps:
       - uses: actions/checkout@main
-      - uses: hadolint/hadolint-action@v1.6.0
+      - uses: hadolint/hadolint-action@v1.7.0
         with:
           recursive: true
           trusted-registries: 'docker.io'
