@@ -23,9 +23,6 @@ jobs:
             --build-arg PYTHON_VERSION=${{ matrix.python_version }} \
             --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
             --label org.opencontainers.image.revision="${GITHUB_SHA}"
-      - uses: hadolint/hadolint-action@v1.6.0
-        with:
-          dockerfile: python/Dockerfile
       - name: Deploy
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
@@ -34,3 +31,13 @@ jobs:
           if [[ "${{ matrix.python_version}}" = "3.10" ]]; then
             podman push ${FULL_IMAGE_NAME}:${{ matrix.python_version }} ${FULL_IMAGE_NAME}:latest
           fi
+
+  hadolint:
+    runs-on: ubuntu-latest
+    name: "Hadolint"
+    steps:
+      - uses: actions/checkout@main
+      - uses: hadolint/hadolint-action@v1.7.0
+        with:
+          recursive: true
+          trusted-registries: 'docker.io'
