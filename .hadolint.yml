@@ -1,2 +1,5 @@
 ignored:
   - DL3041
+
+trustedRegistries:
+  - docker.io
