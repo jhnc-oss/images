@@ -7,7 +7,7 @@ on:
     - cron: '0 5 * * 3'
 
 jobs:
-  build_linux:
+  build_python:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,6 +32,33 @@ jobs:
           if [[ "${{ matrix.python_version}}" = "3.10" ]]; then
             podman push ${FULL_IMAGE_NAME}:${{ matrix.python_version }} ${FULL_IMAGE_NAME}:latest
           fi
+
+  build_java:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java_version: [ '11', '17' ]
+    name: "Build java-maven:${{ matrix.java_version}}"
+    env:
+      FULL_IMAGE_NAME: "ghcr.io/${{ github.repository }}/java-maven"
+    steps:
+      - uses: actions/checkout@main
+      - name: Build
+        run: |
+          podman build --file java-maven/Dockerfile \
+            --tag ${FULL_IMAGE_NAME}:${{ matrix.java_version }} \
+            --build-arg JAVA_VERSION=${{ matrix.java_version }} \
+            --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
+            --label org.opencontainers.image.revision="${GITHUB_SHA}"
+      - name: Deploy
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          podman login ghcr.io -u ${{ github.actor }} --password-stdin <<< ${{ secrets.GITHUB_TOKEN }}
+          podman push ${FULL_IMAGE_NAME}:${{ matrix.java_version }}
+          if [[ "${{ matrix.java_version}}" = "17" ]]; then
+            podman push ${FULL_IMAGE_NAME}:${{ matrix.java_version }} ${FULL_IMAGE_NAME}:latest
+          fi
+
 
   hadolint:
     runs-on: ubuntu-latest
