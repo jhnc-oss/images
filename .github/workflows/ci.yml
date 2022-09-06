@@ -59,6 +59,29 @@ jobs:
             podman push ${FULL_IMAGE_NAME}:${{ matrix.java_version }} ${FULL_IMAGE_NAME}:latest
           fi
 
+  build_shellcheck:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        shellcheck_version: [ '0.8.0' ]
+    name: "Build shellcheck:${{ matrix.shellcheck_version}}"
+    env:
+      FULL_IMAGE_NAME: "ghcr.io/${{ github.repository }}/shellcheck"
+    steps:
+      - uses: actions/checkout@main
+      - name: Build
+        run: |
+          podman build --file shellcheck/Dockerfile \
+            --tag ${FULL_IMAGE_NAME}:${{ matrix.shellcheck_version }} \
+            --build-arg SHELLCHECK_VERSION=${{ matrix.shellcheck_version }} \
+            --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
+            --label org.opencontainers.image.revision="${GITHUB_SHA}"
+      - name: Deploy
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          podman login ghcr.io -u ${{ github.actor }} --password-stdin <<< ${{ secrets.GITHUB_TOKEN }}
+          podman push ${FULL_IMAGE_NAME}:${{ matrix.shellcheck_version }}
+
 
   hadolint:
     runs-on: ubuntu-latest

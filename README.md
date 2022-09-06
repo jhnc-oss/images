@@ -22,3 +22,8 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 
 - `17` / `latest`
 - `11`
+
+#### [shellcheck](./shellcheck/Dockerfile)
+
+- `0.8.0`
+
