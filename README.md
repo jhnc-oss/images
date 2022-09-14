@@ -13,17 +13,21 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 
 #### [python](./python/Dockerfile)
 
-- `3.10` / `latest`
+- `3.10`
 - `3.9`
 - `3.8`
 - `3.7`
 
 #### [java-maven](./java-maven/Dockerfile)
 
-- `17` / `latest`
+- `17`
 - `11`
 
 #### [shellcheck](./shellcheck/Dockerfile)
 
 - `0.8.0`
 
+
+### :warning: Deprecation of 'latest' tags
+
+`latest` tags are deprecated and will be removed in the future, use explicit versions instead
