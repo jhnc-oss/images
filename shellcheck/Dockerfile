@@ -8,7 +8,7 @@ LABEL \
     org.opencontainers.image.vendor="jhnc-oss" \
     org.opencontainers.image.licenses="MIT"
 
-ARG SHELLCHECK_VERSION=0.8.0
+ARG SHELLCHECK_VERSION=0.9.0
 
 RUN dnf install -y findutils xz && \
         curl -L https://github.com/koalaman/shellcheck/releases/download/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz -o shellcheck.tar.xz && \
