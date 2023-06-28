@@ -17,7 +17,7 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 - `3.10`
 - `3.9`
 - `3.8`
-- `3.7`
+- `3.7` *(EOL)*
 
 #### [java-maven](./java-maven/Dockerfile)
 
