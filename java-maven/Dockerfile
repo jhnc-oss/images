@@ -11,7 +11,8 @@ LABEL \
 
 ARG JAVA_VERSION=11
 
-RUN dnf install -y java-"${JAVA_VERSION}"-openjdk-devel git && \
+RUN dnf update -y && \
+        dnf install -y java-"${JAVA_VERSION}"-openjdk-devel git && \
         MAVEN_VERSION="3.9.4" && \
         curl --silent -o maven.tar.gz --output-dir /tmp \
             "https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" && \

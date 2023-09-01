@@ -10,7 +10,8 @@ LABEL \
 
 ARG SHELLCHECK_VERSION=0.9.0
 
-RUN dnf install -y findutils xz && \
+RUN dnf update -y && \
+        dnf install -y findutils xz && \
         curl -L https://github.com/koalaman/shellcheck/releases/download/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz -o shellcheck.tar.xz && \
         tar -xf shellcheck.tar.xz && \
         mv "shellcheck-v${SHELLCHECK_VERSION}/shellcheck" /bin/ && \
