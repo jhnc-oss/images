@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python_version: [ '3.8', '3.9', '3.10', '3.11' ]
+        python_version: [ '3.8', '3.9', '3.10', '3.11', '3.12' ]
     name: "Build python:${{ matrix.python_version}}"
     env:
       FULL_IMAGE_NAME: "ghcr.io/${{ github.repository }}/python"
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java_version: [ '11', '17' ]
+        java_version: [ '11', '17', '21' ]
     name: "Build java-maven:${{ matrix.java_version}}"
     env:
       FULL_IMAGE_NAME: "ghcr.io/${{ github.repository }}/java-maven"
