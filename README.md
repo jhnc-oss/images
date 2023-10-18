@@ -13,6 +13,7 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 
 #### [python](./python/Dockerfile)
 
+- `3.12`
 - `3.11`
 - `3.10`
 - `3.9`
