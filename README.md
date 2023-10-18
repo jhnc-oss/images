@@ -22,6 +22,7 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 
 #### [java-maven](./java-maven/Dockerfile)
 
+- `21`
 - `17`
 - `11`
 
