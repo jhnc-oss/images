@@ -8,7 +8,7 @@ LABEL \
     org.opencontainers.image.vendor="jhnc-oss" \
     org.opencontainers.image.licenses="MIT"
 
-ARG PYTHON_VERSION=3.10
+ARG PYTHON_VERSION
 
 RUN dnf update -y && \
         dnf install -y python${PYTHON_VERSION} python3-pip && \
