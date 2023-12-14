@@ -9,7 +9,7 @@ LABEL \
     org.opencontainers.image.licenses="MIT"
 
 
-ARG JAVA_VERSION=11
+ARG JAVA_VERSION
 
 RUN dnf update -y && \
         dnf install -y java-"${JAVA_VERSION}"-openjdk-devel git && \
