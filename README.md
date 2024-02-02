@@ -11,6 +11,12 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 
 ### Tags
 
+#### [java-maven](./java-maven/Dockerfile)
+
+- `21`
+- `17`
+- `11`
+
 #### [python](./python/Dockerfile)
 
 - `3.12`
@@ -19,12 +25,6 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 - `3.9`
 - `3.8`
 - `3.7` *(EOL)*
-
-#### [java-maven](./java-maven/Dockerfile)
-
-- `21`
-- `17`
-- `11`
 
 #### [shellcheck](./shellcheck/Dockerfile)
 
