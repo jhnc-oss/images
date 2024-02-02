@@ -11,6 +11,11 @@ Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container
 
 ### Tags
 
+#### [clang-format](./clang-format/Dockerfile)
+
+- `17`
+- `16`
+
 #### [java-maven](./java-maven/Dockerfile)
 
 - `21`

@@ -76,6 +76,29 @@ jobs:
           podman login ghcr.io -u ${{ github.actor }} --password-stdin <<< ${{ secrets.GITHUB_TOKEN }}
           podman push ${FULL_IMAGE_NAME}:${{ matrix.shellcheck_version }}
 
+  build_clangformat:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        clangformat_version: [ '16.0.6', '17.0.6' ]
+    name: "Build clang-format:${{ matrix.clangformat_version}}"
+    env:
+      FULL_IMAGE_NAME: "ghcr.io/${{ github.repository }}/clang-format"
+      FULL_VERSION: "${{ matrix.clangformat_version }}"
+    steps:
+      - uses: actions/checkout@main
+      - name: Build
+        run: |
+          podman build --file clang-format/Dockerfile \
+            --tag ${FULL_IMAGE_NAME}:${FULL_VERSION%%.*} \
+            --build-arg CLANGFORMAT_VERSION=${{ matrix.clangformat_version }} \
+            --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
+            --label org.opencontainers.image.revision="${GITHUB_SHA}"
+      - name: Deploy
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          podman login ghcr.io -u ${{ github.actor }} --password-stdin <<< ${{ secrets.GITHUB_TOKEN }}
+          podman push ${FULL_IMAGE_NAME}:${FULL_VERSION%%.*}
 
   hadolint:
     runs-on: ubuntu-latest
