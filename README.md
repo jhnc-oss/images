@@ -7,7 +7,7 @@ Collection of Podman / Docker images.
 
 ## Published Images
 
-Images are available on [GHCR](https://github.com/jhnc-oss/images/pkgs/container/images%2Fpython).
+Images are available on [GHCR](https://github.com/orgs/jhnc-oss/packages?repo_name=images).
 
 ### Tags
 
