@@ -8,7 +8,7 @@ LABEL \
     org.opencontainers.image.vendor="jhnc-oss" \
     org.opencontainers.image.licenses="MIT"
 
-ARG SHELLCHECK_VERSION=0.9.0
+ARG SHELLCHECK_VERSION
 
 RUN dnf update -y && \
         dnf install -y fd-find xz && \
