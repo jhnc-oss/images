@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        clangformat_version: [ '16.0.6', '17.0.6', '18.1.1' ]
+        clangformat_version: [ '16.0.6', '17.0.6', '18.1.6' ]
     name: "Build clang-format:${{ matrix.clangformat_version}}"
     env:
       FULL_IMAGE_NAME: "ghcr.io/${{ github.repository }}/clang-format"
