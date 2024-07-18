@@ -1,4 +1,4 @@
-FROM docker.io/fedora:38
+FROM docker.io/fedora:40
 
 LABEL \
     org.opencontainers.image.title="java-maven" \
