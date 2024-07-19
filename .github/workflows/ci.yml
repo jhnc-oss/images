@@ -8,7 +8,7 @@ on:
 
 jobs:
   build_python:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         python_version: [ '3.8', '3.9', '3.10', '3.11', '3.12' ]
@@ -23,8 +23,7 @@ jobs:
             --tag ${FULL_IMAGE_NAME}:${{ matrix.python_version }} \
             --build-arg PYTHON_VERSION=${{ matrix.python_version }} \
             --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
-            --label org.opencontainers.image.revision="${GITHUB_SHA}" \
-            --security-opt seccomp=unconfined
+            --label org.opencontainers.image.revision="${GITHUB_SHA}"
       - name: Deploy
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
@@ -32,7 +31,7 @@ jobs:
           podman push ${FULL_IMAGE_NAME}:${{ matrix.python_version }}
 
   build_java:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         java_version: [ '11', '17', '21' ]
@@ -47,8 +46,7 @@ jobs:
             --tag ${FULL_IMAGE_NAME}:${{ matrix.java_version }} \
             --build-arg JAVA_VERSION=${{ matrix.java_version }} \
             --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
-            --label org.opencontainers.image.revision="${GITHUB_SHA}" \
-            --security-opt seccomp=unconfined
+            --label org.opencontainers.image.revision="${GITHUB_SHA}"
       - name: Deploy
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
@@ -56,7 +54,7 @@ jobs:
           podman push ${FULL_IMAGE_NAME}:${{ matrix.java_version }}
 
   build_shellcheck:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         shellcheck_version: [ '0.10.0' ]
@@ -71,8 +69,7 @@ jobs:
             --tag ${FULL_IMAGE_NAME}:${{ matrix.shellcheck_version }} \
             --build-arg SHELLCHECK_VERSION=${{ matrix.shellcheck_version }} \
             --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
-            --label org.opencontainers.image.revision="${GITHUB_SHA}" \
-            --security-opt seccomp=unconfined
+            --label org.opencontainers.image.revision="${GITHUB_SHA}"
       - name: Deploy
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
@@ -80,7 +77,7 @@ jobs:
           podman push ${FULL_IMAGE_NAME}:${{ matrix.shellcheck_version }}
 
   build_clangformat:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         clangformat_version: [ '14.0.6', '16.0.6', '17.0.6', '18.1.8' ]
@@ -96,8 +93,7 @@ jobs:
             --tag ${FULL_IMAGE_NAME}:${FULL_VERSION%%.*} \
             --build-arg CLANGFORMAT_VERSION=${{ matrix.clangformat_version }} \
             --label org.opencontainers.image.created="$(date --rfc-3339=seconds --utc)" \
-            --label org.opencontainers.image.revision="${GITHUB_SHA}" \
-            --security-opt seccomp=unconfined
+            --label org.opencontainers.image.revision="${GITHUB_SHA}"
       - name: Deploy
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
@@ -105,7 +101,7 @@ jobs:
           podman push ${FULL_IMAGE_NAME}:${FULL_VERSION%%.*}
 
   hadolint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: "Hadolint"
     steps:
       - uses: actions/checkout@main
