@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        python_version: [ '3.8', '3.9', '3.10', '3.11', '3.12', '3.13' ]
+        python_version: [ '3.9', '3.10', '3.11', '3.12', '3.13' ]
     name: "Build python:${{ matrix.python_version}}"
     env:
       FULL_IMAGE_NAME: "ghcr.io/${{ github.repository }}/python"
