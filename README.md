@@ -31,7 +31,7 @@ Images are available on [GHCR](https://github.com/orgs/jhnc-oss/packages?repo_na
 - `3.12`
 - `3.11`
 - `3.10`
-- `3.9`
+- `3.9` *(Deprecated)*
 - `3.8` *(EOL)*
 - `3.7` *(EOL)*
 
