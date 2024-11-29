@@ -23,7 +23,7 @@ Images are available on [GHCR](https://github.com/orgs/jhnc-oss/packages?repo_na
 
 - `21`
 - `17`
-- `11` *(Deprecated)*
+- `11` *(EOL)*
 
 #### [python](./python/Dockerfile)
 
