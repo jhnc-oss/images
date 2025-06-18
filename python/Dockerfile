@@ -1,4 +1,4 @@
-FROM docker.io/fedora:40
+FROM docker.io/fedora:42
 
 LABEL \
     org.opencontainers.image.title="python" \
