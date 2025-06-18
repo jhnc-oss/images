@@ -28,6 +28,7 @@ Images are available on [GHCR](https://github.com/orgs/jhnc-oss/packages?repo_na
 
 #### [python](./python/Dockerfile)
 
+- `3.14` *(Beta)*
 - `3.13`
 - `3.12`
 - `3.11`
