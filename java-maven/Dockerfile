@@ -16,7 +16,7 @@ COPY ./setup_temurin_repo.sh /tmp/bin/
 RUN /tmp/bin/setup_temurin_repo.sh && \
         dnf update -y && \
         dnf install -y temurin-"${JAVA_VERSION}"-jdk git && \
-        MAVEN_VERSION="3.9.10" && \
+        MAVEN_VERSION="3.9.11" && \
         curl --silent -o maven.tar.gz --output-dir /tmp \
             "https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" && \
         mkdir /opt/maven && \
