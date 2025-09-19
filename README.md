@@ -23,6 +23,7 @@ Images are available on [GHCR](https://github.com/orgs/jhnc-oss/packages?repo_na
 
 #### [java-maven](./java-maven/Dockerfile)
 
+- `25`
 - `21`
 - `17`
 - `11` *(EOL)*
