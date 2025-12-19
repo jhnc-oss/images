@@ -42,7 +42,7 @@ Images are available on [GHCR](https://github.com/orgs/jhnc-oss/packages?repo_na
 #### [shellcheck](./shellcheck/Dockerfile)
 
 - `0.11.0`
-- `0.10.0` *(Deprecated)*
+- `0.10.0` *(EOL)*
 - `0.9.0` *(EOL)*
 - `0.8.0` *(EOL)*
 
