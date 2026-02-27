@@ -13,6 +13,7 @@ Images are available on [GHCR](https://github.com/orgs/jhnc-oss/packages?repo_na
 
 #### [clang-format](./clang-format/Dockerfile)
 
+- `22`
 - `21`
 - `20`
 - `19`
