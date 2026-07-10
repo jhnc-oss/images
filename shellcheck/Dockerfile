@@ -1,4 +1,4 @@
-FROM docker.io/fedora:42
+FROM docker.io/fedora:44
 
 LABEL \
     org.opencontainers.image.title="shellcheck" \
