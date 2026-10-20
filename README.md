@@ -32,6 +32,7 @@ Images are available on [GHCR](https://github.com/orgs/jhnc-oss/packages?repo_na
 
 #### [python](./python/Dockerfile)
 
+- `3.15`
 - `3.14`
 - `3.13`
 - `3.12`
